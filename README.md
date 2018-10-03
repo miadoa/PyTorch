@@ -3,13 +3,13 @@
 
 ### PyTorch构造卷积神经网络示意：
 
-1. **Define a Convolution Neural Network**(设计网络结构：不包含优化部分)
+#### 1.  **Define a Convolution Neural Network**(设计网络结构：不包含优化部分)
 
 ```python
 class Net(nn.Module)：
 	def __init__(self):
         super(Net, self)__init__()    #此处的Net不知何意
-        构造(卷积、池化)层、全连接层
+        构造(卷积、池化)层、全连接层      #此处应该自动完成了参数的初始化（不知是怎么初始化）
         self.conv1 = nn.Conv2d(3, 6, 5) #[1]
     def forward(self, x):
         pass
@@ -17,16 +17,16 @@ class Net(nn.Module)：
         return x
 ```
 
-``[1]``(3, 6, 5) = (n[l-1], n[l], filter_size)
+​    ``[1]``(3, 6, 5)     ==    (n[l-1], n[l], filter_size)
 
-2. **Define a Loss function and optimizer**（选择目标函数和优化方法）
+ #### 2. **Define a Loss function and optimizer**（选择目标函数和优化方法）
 
 ```python
 criterion = nn.CrossEntropyLoss()
 optimizer = optim.SGD(net.parameters(), lr=0.001)  #net的参数被传入到optimizer中
 ```
 
-3. **Train the network**（）
+ #### 3. **Train the network**（）
 
    ```python
    #循环中
@@ -37,7 +37,7 @@ optimizer = optim.SGD(net.parameters(), lr=0.001)  #net的参数被传入到opti
    optimizer.step()                  #更新optimizer内的权重
    ```
 
-4. **Predict**(预测)
+#### 4. **Predict**(预测)
 
 ```python
 #通过optimizer更新的权重也自动更新了net内的权重，无需在替换
